@@ -3,6 +3,74 @@ name = "sysinfo-telemetry"
 version = "0.1.0"
 edition = "2021"
 authors = ["SysInfo Team"]
-description = "Windows hardware telemetry system"
+description = "Windows hardware telemetry system with REST API and InfluxDB integration"
+license = "MIT"
+repository = "https://github.com/example/sysinfo"
+readme = "README.md"
+keywords = ["telemetry", "hardware", "monitoring", "windows", "system-info"]
+categories = ["hardware-support", "api-bindings"]
 
 [dependencies]
+# Async runtime
+tokio = { version = "1.35", features = ["full"] }
+
+# HTTP server
+axum = "0.7"
+tower-http = { version = "0.5", features = ["cors"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Windows-specific APIs
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.52", features = [
+    "Win32_System_SystemInformation",
+    "Win32_System_Performance",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Power",
+    "Win32_Foundation",
+    "Win32_System_Threading",
+    "Win32_System_ProcessStatus",
+] }
+
+# WMI queries
+wmi = "0.14"
+
+# NVIDIA GPU monitoring
+nvml-wrapper = "0.10"
+
+# HTTP client for InfluxDB
+reqwest = { version = "0.11", features = ["json"] }
+
+# Synchronization primitives
+parking_lot = "0.12"
+
+# Additional system info
+sysinfo = "0.32"
+
+# Hostname resolution
+hostname = "0.4"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dev]
+opt-level = 0
+debug = true
