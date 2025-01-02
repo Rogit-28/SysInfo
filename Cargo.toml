@@ -1,0 +1,8 @@
+﻿[package]
+name = "sysinfo-telemetry"
+version = "0.1.0"
+edition = "2021"
+authors = ["SysInfo Team"]
+description = "Windows hardware telemetry system"
+
+[dependencies]
