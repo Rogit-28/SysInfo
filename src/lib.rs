@@ -1,3 +1,3 @@
-﻿//! SysInfo Telemetry System
-pub mod models;
+﻿pub mod models;
 pub mod config;
+pub mod collectors;
