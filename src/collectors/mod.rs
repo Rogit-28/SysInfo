@@ -2,7 +2,9 @@
 pub mod memory;
 pub mod gpu;
 pub mod storage;
+pub mod network;
 pub use cpu::CpuCollector;
 pub use memory::MemoryCollector;
 pub use gpu::GpuCollector;
 pub use storage::StorageCollector;
+pub use network::NetworkCollector;
