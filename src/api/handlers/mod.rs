@@ -4,3 +4,5 @@ pub mod gpu;
 pub mod storage;
 pub mod network;
 pub mod processes;
+pub mod services;
+pub mod events;
