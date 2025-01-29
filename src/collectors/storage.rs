@@ -1,3 +1,4 @@
+﻿// Caching: TTL-based cache for disk I/O stats
 //! Storage metrics collector.
 //!
 //! Collects storage device and volume information using sysinfo crate.
@@ -307,3 +308,4 @@ if ($temps.Count -gt 0) { $temps | ConvertTo-Json -Compress } else { '{}' }
     }
     temps
 }
+
