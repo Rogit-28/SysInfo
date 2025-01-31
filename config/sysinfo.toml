@@ -1,0 +1,84 @@
+# SysInfo Telemetry System Configuration
+# =======================================
+# Default configuration file for the SysInfo hardware monitoring service.
+
+[server]
+# Host address to bind to (use "0.0.0.0" to accept external connections)
+host = "0.0.0.0"
+
+# Port to listen on for HTTP API
+port = 8082
+
+# API key for authentication (empty = no auth required)
+# When set, clients must include X-API-Key header
+# Note: /api/v1/health always bypasses auth for monitoring purposes
+api_key = ""
+
+# CORS (Cross-Origin Resource Sharing) configuration
+[server.cors]
+# Allowed origins (empty = allow all, or list specific origins)
+# Examples: ["http://localhost:3000", "https://grafana.example.com"]
+# For production, specify your frontend URLs to restrict access
+allowed_origins = []
+
+# Allow credentials (cookies, authorization headers)
+allow_credentials = false
+
+# Max age for preflight cache in seconds (default: 3600)
+max_age_seconds = 3600
+
+[influxdb]
+# Enable InfluxDB persistence (default: false)
+enabled = false
+
+# InfluxDB v2.x server URL
+url = "http://localhost:8086"
+
+# InfluxDB organization name
+org = ""
+
+# InfluxDB bucket name for storing metrics
+bucket = ""
+
+# InfluxDB authentication token
+# Can use environment variable reference: "${INFLUXDB_TOKEN}"
+token = ""
+
+[collection]
+# Data collection interval in milliseconds
+# Minimum: 100ms, Recommended: 1000ms for normal use
+interval_ms = 1000
+
+# Enable/disable individual collectors
+enable_cpu = true
+enable_gpu = true
+enable_memory = true
+enable_storage = true
+enable_network = true
+
+[logging]
+# Log level: "trace", "debug", "info", "warn", "error"
+level = "debug"
+
+# Optional log file path (leave empty for console-only logging)
+# file = "logs/sysinfo.log"
+
+[processes]
+# Number of top processes to return (default: 10)
+top_n = 10
+# Sort by: "cpu" or "memory" (default: "cpu")
+sort_by = "cpu"
+
+[services]
+# Watchlist of specific service names to monitor (empty = all services)
+watchlist = []
+# Include services in stopped state (default: true)
+include_stopped = true
+
+[events]
+# Maximum age of events to retrieve in minutes (default: 60)
+max_age_minutes = 60
+# Maximum number of events to return (default: 50)
+max_count = 50
+# Severity levels to include: "critical", "error", "warning", "information"
+severity = ["error", "warning"]
