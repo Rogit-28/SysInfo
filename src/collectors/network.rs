@@ -1,4 +1,3 @@
-﻿// Fixed: Resolved null fields
 //! Network metrics collector.
 //!
 //! Collects network interface information and statistics using sysinfo crate.
@@ -265,4 +264,3 @@ fn fetch_link_speeds() -> HashMap<String, u64> {
     debug!("Fetched link speeds for {} adapters", speeds.len());
     speeds
 }
-

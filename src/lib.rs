@@ -1,10 +1,6 @@
-﻿pub mod models;
-pub mod config;
-pub mod collectors;
-pub mod api;
-pub mod persistence;
-pub mod scheduler;
-pub mod platform;
+﻿//! SysInfo Telemetry System
+//!
+//! A Windows hardware telemetry collection system.
 
-pub use config::Settings;
-pub use models::*;
+pub mod models;
+pub mod config;

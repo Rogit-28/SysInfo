@@ -1,4 +1,4 @@
-﻿//! Hardware data collectors module.
+//! Hardware data collectors module.
 //!
 //! Contains collectors for each hardware category (CPU, GPU, memory, storage, network).
 //! Each collector is responsible for querying Windows APIs and returning structured data.
@@ -112,4 +112,3 @@ impl CollectorRegistry {
         self.cpu.is_some() && self.memory.is_some()
     }
 }
-
